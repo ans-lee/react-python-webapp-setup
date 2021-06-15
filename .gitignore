@@ -29,3 +29,6 @@ __pycache__
 # vim
 tags
 *.swp
+
+# Database
+tasks.db

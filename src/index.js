@@ -4,18 +4,18 @@ import './styles/App.css';
 import './styles/index.css';
 
 function App() {
-  const [currentTime, setCurrentTime] = useState(0);
+  const [currentTask, setCurrentTask] = useState('');
 
   useEffect(() => {
-    fetch('/api/time').then(res => res.json()).then(data => {
-      setCurrentTime(data.time);
+    fetch('/api/tasks').then(res => res.json()).then(data => {
+      setCurrentTask(data.tasks);
     });
   }, []);
 
   return (
     <div className="App">
       <header className="App-header">
-        {`Hello World! The current time is ${currentTime}`}
+        {`Hello World! The first task is: ${currentTask}`}
       </header>
     </div>
   );
