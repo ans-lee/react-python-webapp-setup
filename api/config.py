@@ -23,6 +23,8 @@ class TestingConfig(Config):
 
 class ProductionConfig(Config):
     DEBUG = False
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'tasks.db')
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
 key = Config.SECRET_KEY

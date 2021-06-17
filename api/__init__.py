@@ -1,10 +1,16 @@
 from flask import Flask
 
-from .model import db
+from api.model import db
 
-def create_app():
+ENVS = {
+    'dev': 'api.config.DevelopmentConfig',
+    'prod': 'api.config.ProductionConfig',
+    'test': 'api.config.TestingConfig'
+}
+
+def create_app(env: str) -> Flask:
     app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///tasks.db'
+    app.config.from_object(ENVS[env])
     db.init_app(app)
 
     with app.app_context():
