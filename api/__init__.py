@@ -2,15 +2,10 @@ from flask import Flask
 
 from api.model import db
 
-ENVS = {
-    'dev': 'api.config.DevelopmentConfig',
-    'prod': 'api.config.ProductionConfig',
-    'test': 'api.config.TestingConfig'
-}
 
-def create_app(env: str) -> Flask:
+def create_app() -> Flask:
     app = Flask(__name__)
-    app.config.from_object(ENVS[env])
+    app.config.from_object('api.config.Config')
     db.init_app(app)
 
     with app.app_context():

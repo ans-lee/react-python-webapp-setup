@@ -13,8 +13,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start-api": "cd api && venv/bin/flask run --no-debugger",
-    "prod-start-api": "cd api && venv/bin/gunicorn --bind 127.0.0.1:5000 wsgi:app",
+    "start-api": "export FLASK_ENV=development && venv/bin/flask run",
+    "prod-start-api": "export FLASK_ENV=production && venv/bin/gunicorn --bind 127.0.0.1:5000 wsgi:app",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
